@@ -1,0 +1,60 @@
+.Header {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+   
+
+    &__top-panel {
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    &__top-panel  h5 {
+        color: #ffffff;
+        font-size: calc(1.2vw + 10px);
+    }
+    
+    &__logo {
+        font-size: calc(2vw + 20px);
+        color: grey;
+    }
+    
+    &__logo span {
+        color: rgb(8, 165, 118);
+    }
+    
+    &__pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0;
+        margin-bottom: 25px;
+        border-radius: 5px;
+        color: #fff;
+        overflow: hidden;
+        background-color: rgb(8, 165, 118);
+        font-size: calc(1.2vw + 10px);
+    }
+    
+   
+    
+    @media (max-width: 760px) {
+        width: 90%;
+    }
+     
+  }
+
+.page-item {
+    flex: auto;
+    text-align: center;
+    list-style-type: none;
+}
+
+.active {
+    background-color: rgb(9, 241, 172);
+}
