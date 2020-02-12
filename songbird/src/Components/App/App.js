@@ -14,15 +14,16 @@ class App extends React.Component {
     this.state = { 
       score: 0, 
       round: 0,
-      random: 1,
       count: 5,
       description: null,
-      isAnswered: false
+      isAnswered: false,
+      random: this.getRandomNumber(),
     }
     this.handleClickNext = this.handleClickNext.bind(this);
     this.handleClickGameOver = this.handleClickGameOver.bind(this);
     this.isCorrect = this.isCorrect.bind(this);
   }
+  
   
   handleClickNext() {
     if (this.state.isAnswered) {
@@ -30,54 +31,72 @@ class App extends React.Component {
         round: this.state.round + 1,
         description: null,
         count: 5,
-        isAnswered: false
+        isAnswered: false,
+        random: this.getRandomNumber()
       });
     }
-   
   }
+  
   handleClickGameOver() {
     this.setState({
       score: 0,
       round: 0,
       count: 5,
       description: null,
-      isAnswered: false
+      isAnswered: false,
+      random: this.getRandomNumber()
     });
   }
+  
+  getRandomNumber() {
+    function randomInteger(min, max) {
+      let rand = min + Math.random() * (max + 1 - min);
+      return Math.floor(rand);
+    }
+    const randomNumber = randomInteger(0,5);
+    return randomNumber;
+  }
+
   getDataRound() {
     const round = this.state.round;
     return birdsData[round];
   }
 
+  getDescription(id) {
+    return birdsData[this.state.round][id-1]
+  }
+
+  getRandomBird() {
+    const round = this.state.round;
+    const random = this.state.random;
+    return birdsData[round][random];
+  }
+
   isCorrect(id) {
     const round = this.state.round;
     const result = birdsData[round].find(item => item.id === id);
-    if (result.id === this.state.random ) {
+    if (result.id === (this.state.random + 1)) {
     this.setState({
       score: this.state.score + this.state.count,
       description: this.getDescription(id),
       isAnswered: true
     });
    }
-   this.setState({
-    count: this.state.count - 1,
-    description: this.getDescription(id)
-  });
-  }
-  getDescription(id) {
-    return birdsData[this.state.round][id-1]
-  }
-
-  getRandomBird() {
-    return this.getDataRound()[this.state.random];
+    this.setState({
+      count: this.state.count - 1,
+      description: this.getDescription(id)
+    });
   }
 
   render() {
-    if (this.state.round < 6) {
+    const lastRound = 6;
+
+    if (this.state.round < lastRound) {
       return (
         <div className="App">
           <Header score={this.state.score} round={this.state.round}/>
-          <Random data={this.getRandomBird()}/>
+          <Random data={this.getRandomBird()}
+                  isAnswer ={this.state.isAnswered} />
           <div className="Container">
             <Choice data={this.getDataRound()} onClick= { this.isCorrect }/>
             <Description info={this.state.description}/>
