@@ -12,7 +12,7 @@ function Random(props) {
         <div className="Random__container">
         <h3 className="Random__name">{nameDefault}</h3>
             <AudioPlayer 
-                src=''
+                src={props.data.audio}
                 autoPlayAfterSrcChange={false}
                 showLoopControl={false}
                 showJumpControls={false}

@@ -1,6 +1,6 @@
 .Button {
     width: 80%;
-    height: 30px;
+    height: 40px;
     display: flex;
     margin-left: auto;
     margin-right: auto;
@@ -16,5 +16,14 @@
     @media (max-width: 760px) {
       width: 90%;
       margin-bottom: 5%;
+    }
+  }
+
+  .Active {
+    background-color: rgb(8, 165, 118);
+
+    &:hover {
+      background-color:rgb(9, 241, 172);
+      cursor: pointer;
     }
   }

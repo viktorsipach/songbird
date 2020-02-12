@@ -3,9 +3,10 @@ import './Button.scss';
 
 function Button(props) {
     return (
-        <button className="Button"
-                onClick={props.onClick}
-        >Next Level</button>
+        <button className={props.isActive ? "Button Active": "Button" }
+            onClick={props.onClick}
+            >{props.value}
+        </button>
     ); 
 }
 

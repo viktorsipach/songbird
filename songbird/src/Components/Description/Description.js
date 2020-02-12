@@ -3,7 +3,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import './Description.scss';
 
 function Description(props) {
-    if(true) {
+    if(props.info) {
         return (
             <div className="Info">
             <img className="Info__img" src={props.info.image} alt="bird"></img>

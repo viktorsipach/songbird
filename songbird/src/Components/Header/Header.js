@@ -5,8 +5,8 @@ function Header(props) {
     const arrPageItem = ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'];
 
     function isActive(index) {
-        const score = props.score;
-        return score === index ? "page-item active" : "page-item";
+        const round = props.round;
+        return round === index ? "page-item active" : "page-item";
     }
 
     return (

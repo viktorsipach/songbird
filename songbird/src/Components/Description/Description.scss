@@ -26,6 +26,7 @@
     border-radius: 5px;
     border: 1px solid #444;
     background-color: #303030;
+    font-size: calc(0.5vw + 5px);
     
 
     &__img {
@@ -64,6 +65,7 @@
       text-align: center;
       margin-left: 0;
       margin-bottom: 15px;
+      font-size: calc(0.5vw + 15px);
     }
   }
 
