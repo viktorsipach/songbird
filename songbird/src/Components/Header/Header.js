@@ -12,7 +12,7 @@ function Header(props) {
     return (
         <header className="Header">
         <div className="Header__top-panel" >
-          <h1 className="Header__logo">long<span>bird</span></h1>
+          <h1 className="Header__logo">song<span>bird</span></h1>
     <h5>Score: <span className="Header__score">{props.score}</span></h5>
         </div>
         <ul className="Header__pagination">
