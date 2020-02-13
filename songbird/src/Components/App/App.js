@@ -27,6 +27,7 @@ class App extends React.Component {
   
   handleClickNext() {
     if (this.state.isAnswered) {
+      document.querySelectorAll('.li-btn').forEach(item => item.style.backgroundColor = '#444');
       this.setState({
         round: this.state.round + 1,
         description: null,
@@ -73,19 +74,28 @@ class App extends React.Component {
   }
 
   isCorrect(id) {
-    const round = this.state.round;
-    const result = birdsData[round].find(item => item.id === id);
-    if (result.id === (this.state.random + 1)) {
-    this.setState({
-      score: this.state.score + this.state.count,
-      description: this.getDescription(id),
-      isAnswered: true
+    if (!this.state.isAnswered) {
+      const round = this.state.round;
+      const result = birdsData[round].find(item => item.id === id.value);
+      if (result.id === (this.state.random + 1)) {
+          id.firstChild.style.backgroundColor = 'rgb(8, 165, 118)';
+          this.setState({
+            score: this.state.score + this.state.count,
+            description: this.getDescription(id.value),
+            isAnswered: true
+          });
+     } else {
+      id.firstChild.style.backgroundColor = 'red';
+      this.setState({
+          count: this.state.count - 1,
+          description: this.getDescription(id.value)
+      });
+     }
+    } else {
+      this.setState({
+        description: this.getDescription(id.value)
     });
-   }
-    this.setState({
-      count: this.state.count - 1,
-      description: this.getDescription(id)
-    });
+    }
   }
 
   render() {
