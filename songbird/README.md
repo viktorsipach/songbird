@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Link to the task - https://github.com/rolling-scopes-school/tasks/blob/master/tasks/songbird.md
+
+Link to the project - https://viktorsipach.github.io/songbird/
+
 ## Available Scripts
 
 In the project directory, you can run:
