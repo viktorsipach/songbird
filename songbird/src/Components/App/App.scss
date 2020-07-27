@@ -1,0 +1,49 @@
+body {
+  background-color: #222;
+  overflow-x: hidden;
+}
+
+
+.App {
+  width: 95%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Container {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+
+  @media (max-width: 760px) {
+    width: 90%;
+    flex-direction: column;
+  }
+}
+
+.Gameover {
+  width: 50%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ffffff;
+  background-color: #444;
+  text-align: center;
+  font-size: calc(1.2vw + 10px);
+}
+
+
+
+
+

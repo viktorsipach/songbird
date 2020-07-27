@@ -1,0 +1,29 @@
+.Button {
+    width: 80%;
+    height: 40px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #303030;
+    border: 1px solid #444;
+    border-radius: 5px;
+    justify-content: center;
+    font-size: calc(1.2vw + 5px);
+    color: #fff;
+    cursor: auto;
+    transition: .3s;
+  
+    @media (max-width: 760px) {
+      width: 90%;
+      margin-bottom: 5%;
+    }
+  }
+
+  .Active {
+    background-color: rgb(8, 165, 118);
+
+    &:hover {
+      background-color:rgb(9, 241, 172);
+      cursor: pointer;
+    }
+  }
