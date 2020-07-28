@@ -10,12 +10,12 @@ function Random(props) {
             <img className="Random__img" alt="bird" src={props.data.image}></img>
             <div className="Random__container">
             <h3 className="Random__name">{props.data.name}</h3>
-                <AudioPlayer 
-                    src={props.data.audio}
+                <AudioPlayer
+                    src={''}
                     autoPlayAfterSrcChange={false}
                     showLoopControl={false}
                     showJumpControls={false}
-                    showVolumeControl={false}
+                    showVolumeControl={true}
                     showDownloadProgress={false}
                 />
             </div>
@@ -35,7 +35,7 @@ function Random(props) {
                 autoPlayAfterSrcChange={false}
                 showLoopControl={false}
                 showJumpControls={false}
-                showVolumeControl={false}
+                showVolumeControl={true}
                 showDownloadProgress={false}
             />
         </div>

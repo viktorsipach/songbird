@@ -15,7 +15,7 @@ function Description(props) {
                 autoPlayAfterSrcChange={false}
                 showLoopControl={false}
                 showJumpControls={false}
-                showVolumeControl={false}
+                showVolumeControl={true}
                 showDownloadProgress={false}
             />
             </div>
