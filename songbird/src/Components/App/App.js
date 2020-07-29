@@ -1,13 +1,13 @@
 import React,{Fragment} from 'react';
 import './App.scss';
 import birdsData from '../../birdsData';
-import playAudio from '../../audioPlayer';
+import playAudio from '../AudioPlayer/audioPlayer';
 import Header from '../Header/Header';
 import Random from '../Random/Random';
 import Choice from '../Choice/Choice';
 import Description from '../Description/Description';
 import Button from '../Button/Button';
-import { audioCorrect, audioError, audioFailure, audioSuccess } from '../../constants'
+import { AUDIO_CORRECT, AUDIO_ERROR, AUDIO_SUCCESS, AUDIO_FAILURE } from '../../constants';
 
 
 
@@ -83,7 +83,7 @@ class App extends React.Component {
       const result = birdsData[round].find(item => item.id === id.value);
       if (result.id === (this.state.random + 1)) {
           id.firstChild.style.backgroundColor = 'rgb(8, 165, 118)';
-          playAudio(audioCorrect)
+          playAudio(AUDIO_CORRECT)
           this.setState({
             score: this.state.score + this.state.count,
             description: this.getDescription(id.value),
@@ -92,7 +92,7 @@ class App extends React.Component {
       } else {
         if(id.firstChild.style.backgroundColor === '' || id.firstChild.style.backgroundColor === 'rgb(68, 68, 68)') {
           id.firstChild.style.backgroundColor = 'red';
-          playAudio(audioError)
+          playAudio(AUDIO_ERROR)
           this.setState({
               count: this.state.count - 1,
               description: this.getDescription(id.value)
@@ -127,28 +127,28 @@ class App extends React.Component {
         </div>
       );
     } else if (this.state.score === MAX_SCORE) {
-      playAudio(audioSuccess)
+      playAudio(AUDIO_SUCCESS)
       return (
         <Fragment>
           <Header score={this.state.score}/>
           <div className='Gameover'>
             <h2>Поздравляем!</h2>
             <p>Вы прошли викторину и набрали {this.state.score} из 30 возможных баллов.</p>
-            <img className="Info__img" src={'./success.jpg'} alt="Success"></img>
+            <img className="Info__img" src={'./assets/image/success.jpg'} alt="Success"></img>
             <Button onClick= {this.handleClickGameOver} isActive = {true}
             value = {'Попробовать еще раз!'} />
           </div>
         </Fragment>
       ); 
     } else {
-      playAudio(audioFailure)
+      playAudio(AUDIO_FAILURE)
       return (
         <Fragment>
           <Header score={this.state.score}/>
           <div className='Gameover'>
             <h2>Вам есть куда стремиться!</h2>
             <p>Вы прошли викторину и набрали {this.state.score} из 30 возможных баллов.</p>
-            <img className="Info__img" src={'./failure.jpg'} alt="Failure"></img>
+            <img className="Info__img" src={'./assets/image/failure.jpg'} alt="Failure"></img>
             <Button onClick= {this.handleClickGameOver} isActive = {true}
             value = {'Попробовать еще раз!'} />
           </div>
