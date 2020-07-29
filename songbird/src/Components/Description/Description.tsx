@@ -2,7 +2,7 @@ import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import './Description.scss';
 
-function Description(props) {
+function Description(props:any) {
     if(props.info) {
         return (
             <div className="Info">

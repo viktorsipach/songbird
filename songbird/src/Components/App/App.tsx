@@ -9,10 +9,21 @@ import Description from '../Description/Description';
 import Button from '../Button/Button';
 import { AUDIO_CORRECT, AUDIO_ERROR, AUDIO_SUCCESS, AUDIO_FAILURE } from '../../constants';
 
+interface AppProps {
+  props?: any;
+};
 
+interface AppState {
+  score: number;
+  round: number;
+  count: number;
+  description: any;
+  isAnswered: boolean;
+  random: number; 
+};
 
-class App extends React.Component {
-  constructor(props) {
+class App extends React.Component<AppProps, AppState> {
+  constructor(props:AppProps) {
     super(props);
     this.state = { 
       score: 0, 
@@ -30,7 +41,7 @@ class App extends React.Component {
   
   handleClickNext() {
     if (this.state.isAnswered) {
-      document.querySelectorAll('.li-btn').forEach(item => item.style.backgroundColor = '#444');
+      document.querySelectorAll<HTMLElement>('.li-btn').forEach(item => item.style.backgroundColor = '#444');
       this.setState({
         round: this.state.round + 1,
         description: null,
@@ -53,7 +64,7 @@ class App extends React.Component {
   }
   
   getRandomNumber() {
-    function randomInteger(min, max) {
+    function randomInteger(min:number, max:number) {
       let rand = min + Math.random() * (max + 1 - min);
       return Math.floor(rand);
     }
@@ -66,7 +77,7 @@ class App extends React.Component {
     return birdsData[round];
   }
 
-  getDescription(id) {
+  getDescription(id:number) {
     return birdsData[this.state.round][id-1]
   }
 
@@ -77,10 +88,10 @@ class App extends React.Component {
     return birdsData[round][random];
   }
 
-  isCorrect(id) {
+  isCorrect(id:any) {
     if (!this.state.isAnswered) {
       const round = this.state.round;
-      const result = birdsData[round].find(item => item.id === id.value);
+      const result:any = birdsData[round].find(item => item.id === id.value);
       if (result.id === (this.state.random + 1)) {
           id.firstChild.style.backgroundColor = 'rgb(8, 165, 118)';
           playAudio(AUDIO_CORRECT)

@@ -1,6 +1,6 @@
 import './AudioPlayer.scss';
 
-const playAudio = (audioLink) => {
+const playAudio = (audioLink:string) => {
     const audio = new Audio(audioLink);
     audio.play()
 };

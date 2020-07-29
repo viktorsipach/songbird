@@ -7,13 +7,18 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^26.0.7",
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
     "gh-pages": "^2.2.0",
+    "midi-sounds-react": "^1.2.45",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-h5-audio-player": "^2.3.1",
     "react-scripts": "3.3.1",
-    "midi-sounds-react": "^1.2.45"
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "predeploy": "npm run build",

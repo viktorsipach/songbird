@@ -3,7 +3,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import './Random.scss';
 import { DEFAULT_IMAGE, DEFAULT_NAME } from '../../constants';
 
-function Random(props) {
+function Random(props:any) {
     if (props.isAnswer) {
         return (
             <div className="Random">
