@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.scss';
 
 function Header(props:any) {
-    const arrPageItem = ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'];
+    const arrPageItem = ['Разминка', 'Утиные', 'Фазановые', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'];
 
     function isActive(index:number) {
         const round = props.round;
