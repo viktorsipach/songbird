@@ -1,15 +1,29 @@
 import React,{Fragment} from 'react';
 import './App.scss';
 import birdsData from '../../birdsData';
+import playAudio from '../AudioPlayer/audioPlayer';
 import Header from '../Header/Header';
 import Random from '../Random/Random';
 import Choice from '../Choice/Choice';
 import Description from '../Description/Description';
 import Button from '../Button/Button';
+import { AUDIO_CORRECT, AUDIO_ERROR, AUDIO_SUCCESS, AUDIO_FAILURE } from '../../constants';
 
+interface AppProps {
+  props?: any;
+};
 
-class App extends React.Component {
-  constructor(props) {
+interface AppState {
+  score: number;
+  round: number;
+  count: number;
+  description: any;
+  isAnswered: boolean;
+  random: number; 
+};
+
+class App extends React.Component<AppProps, AppState> {
+  constructor(props:AppProps) {
     super(props);
     this.state = { 
       score: 0, 
@@ -27,7 +41,7 @@ class App extends React.Component {
   
   handleClickNext() {
     if (this.state.isAnswered) {
-      document.querySelectorAll('.li-btn').forEach(item => item.style.backgroundColor = '#444');
+      document.querySelectorAll<HTMLElement>('.li-btn').forEach(item => item.style.backgroundColor = '#444');
       this.setState({
         round: this.state.round + 1,
         description: null,
@@ -50,7 +64,7 @@ class App extends React.Component {
   }
   
   getRandomNumber() {
-    function randomInteger(min, max) {
+    function randomInteger(min:number, max:number) {
       let rand = min + Math.random() * (max + 1 - min);
       return Math.floor(rand);
     }
@@ -63,34 +77,40 @@ class App extends React.Component {
     return birdsData[round];
   }
 
-  getDescription(id) {
+  getDescription(id:number) {
     return birdsData[this.state.round][id-1]
   }
 
   getRandomBird() {
     const round = this.state.round;
     const random = this.state.random;
+    console.log(birdsData[round][random].name)
     return birdsData[round][random];
   }
 
-  isCorrect(id) {
+  isCorrect(id:any) {
     if (!this.state.isAnswered) {
       const round = this.state.round;
-      const result = birdsData[round].find(item => item.id === id.value);
+      const result:any = birdsData[round].find(item => item.id === id.value);
       if (result.id === (this.state.random + 1)) {
           id.firstChild.style.backgroundColor = 'rgb(8, 165, 118)';
+          playAudio(AUDIO_CORRECT)
           this.setState({
             score: this.state.score + this.state.count,
             description: this.getDescription(id.value),
             isAnswered: true
           });
-     } else {
-      id.firstChild.style.backgroundColor = 'red';
-      this.setState({
-          count: this.state.count - 1,
-          description: this.getDescription(id.value)
-      });
-     }
+      } else {
+        if(id.firstChild.style.backgroundColor === '' || id.firstChild.style.backgroundColor === 'rgb(68, 68, 68)') {
+          id.firstChild.style.backgroundColor = 'red';
+          playAudio(AUDIO_ERROR)
+          this.setState({
+              count: this.state.count - 1,
+              description: this.getDescription(id.value)
+          });
+        }
+      }
+      
     } else {
       this.setState({
         description: this.getDescription(id.value)
@@ -99,9 +119,9 @@ class App extends React.Component {
   }
 
   render() {
-    const lastRound = 6;
-
-    if (this.state.round < lastRound) {
+    const LAST_ROUND = 6;
+    const MAX_SCORE = 30;
+    if (this.state.round < LAST_ROUND) {
       return (
         <div className="App">
           <Header score={this.state.score} round={this.state.round}/>
@@ -117,18 +137,36 @@ class App extends React.Component {
           />
         </div>
       );
+    } else if (this.state.score === MAX_SCORE) {
+      playAudio(AUDIO_SUCCESS)
+      return (
+        <Fragment>
+          <Header score={this.state.score}/>
+          <div className='Gameover'>
+            <h2>Поздравляем!</h2>
+            <p>Вы прошли викторину и набрали {this.state.score} из 30 возможных баллов.</p>
+            <img className="Info__img" src={'./assets/image/success.jpg'} alt="Success"></img>
+            <Button onClick= {this.handleClickGameOver} isActive = {true}
+            value = {'Попробовать еще раз!'} />
+          </div>
+        </Fragment>
+      ); 
+    } else {
+      playAudio(AUDIO_FAILURE)
+      return (
+        <Fragment>
+          <Header score={this.state.score}/>
+          <div className='Gameover'>
+            <h2>Вам есть куда стремиться!</h2>
+            <p>Вы прошли викторину и набрали {this.state.score} из 30 возможных баллов.</p>
+            <img className="Info__img" src={'./assets/image/failure.jpg'} alt="Failure"></img>
+            <Button onClick= {this.handleClickGameOver} isActive = {true}
+            value = {'Попробовать еще раз!'} />
+          </div>
+        </Fragment>
+      ); 
     }
-    return (
-      <Fragment>
-        <Header score={this.state.score}/>
-        <div className='Gameover'>
-          <h2>Поздравляем!</h2>
-          <p>Вы прошли викторину и набрали {this.state.score} из 30 возможных баллов.</p>
-          <Button onClick= {this.handleClickGameOver} isActive = {true}
-          value = {'Попробовать еще раз!'} />
-        </div>
-      </Fragment>
-    ); 
+    
   }; 
 }
 

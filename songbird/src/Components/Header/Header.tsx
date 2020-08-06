@@ -1,10 +1,10 @@
 import React from 'react';
 import './Header.scss';
 
-function Header(props) {
-    const arrPageItem = ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'];
+function Header(props:any) {
+    const arrPageItem = ['Разминка', 'Утиные', 'Фазановые', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'];
 
-    function isActive(index) {
+    function isActive(index:number) {
         const round = props.round;
         return round === index ? "page-item active" : "page-item";
     }

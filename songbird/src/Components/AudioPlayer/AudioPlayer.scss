@@ -131,7 +131,8 @@ $rhap_font-family: inherit !default;
 .rhap_volume-controls {
   display: flex;
   flex: 1 0 auto;
-  justify-content: flex-end;
+  justify-content: center;
+  margin-right: 5rem;
 }
 
 .rhap_volume-button {
