@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "07008bac1fb40b900d5b2604c3fe5b2b",
+    "revision": "23a25f06f76363ff7710a8842934f217",
     "url": "/songbird/index.html"
   },
   {
-    "revision": "2d930b04cc56e295a50b",
-    "url": "/songbird/static/css/main.27ec8dd4.chunk.css"
+    "revision": "05656ddc07c9f8731709",
+    "url": "/songbird/static/css/main.1fe9f0a7.chunk.css"
   },
   {
     "revision": "be93dfb2d53b53a1a30b",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/songbird/static/js/2.647995fa.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2d930b04cc56e295a50b",
-    "url": "/songbird/static/js/main.8338e456.chunk.js"
+    "revision": "05656ddc07c9f8731709",
+    "url": "/songbird/static/js/main.a8715dd2.chunk.js"
   },
   {
     "revision": "44d422b7846635519d65",
